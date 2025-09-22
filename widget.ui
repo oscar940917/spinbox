@@ -13,50 +13,88 @@
   <property name="windowTitle">
    <string>Widget</string>
   </property>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>70</y>
-     <width>42</width>
-     <height>22</height>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>571</height>
     </rect>
    </property>
-   <property name="minimum">
-    <number>-100</number>
-   </property>
-   <property name="maximum">
-    <number>100</number>
-   </property>
-  </widget>
-  <widget class="QSlider" name="horizontalSlider">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>70</y>
-     <width>160</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>-100</number>
-   </property>
-   <property name="maximum">
-    <number>100</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Orientation::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QLCDNumber" name="lcdNumber">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>190</y>
-     <width>64</width>
-     <height>23</height>
-    </rect>
-   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <item row="0" column="1">
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Orientation::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="0">
+     <widget class="QSpinBox" name="spinBox">
+      <property name="minimum">
+       <number>-100</number>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QSlider" name="horizontalSlider">
+      <property name="minimum">
+       <number>-100</number>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <widget class="QLCDNumber" name="lcdNumber">
+      <property name="styleSheet">
+       <string notr="true">font: 36pt &quot;標楷體&quot;;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Orientation::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <widget class="QLCDNumber" name="lcdNumber_2"/>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
@@ -68,12 +106,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>73</y>
+     <x>31</x>
+     <y>249</y>
     </hint>
     <hint type="destinationlabel">
-     <x>337</x>
-     <y>79</y>
+     <x>150</x>
+     <y>255</y>
     </hint>
    </hints>
   </connection>
@@ -84,12 +122,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>360</x>
-     <y>83</y>
+     <x>173</x>
+     <y>259</y>
     </hint>
     <hint type="destinationlabel">
-     <x>90</x>
-     <y>77</y>
+     <x>10</x>
+     <y>253</y>
     </hint>
    </hints>
   </connection>
@@ -100,12 +138,12 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>87</y>
+     <x>20</x>
+     <y>263</y>
     </hint>
     <hint type="destinationlabel">
-     <x>207</x>
-     <y>202</y>
+     <x>27</x>
+     <y>286</y>
     </hint>
    </hints>
   </connection>
@@ -116,12 +154,44 @@
    <slot>display(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>296</x>
-     <y>86</y>
+     <x>109</x>
+     <y>262</y>
     </hint>
     <hint type="destinationlabel">
-     <x>231</x>
-     <y>207</y>
+     <x>51</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber_2</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>45</x>
+     <y>257</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>125</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber_2</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>542</x>
+     <y>259</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>540</x>
+     <y>313</y>
     </hint>
    </hints>
   </connection>
